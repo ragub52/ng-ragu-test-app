@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { InterceptorService } from './interceptor.service';
 import { BaseApiService } from './base-api.service';
@@ -19,11 +19,13 @@ export class DataService extends BaseApiService<Item[]> {
     /** 
      * List items API
      */
-    getItems() {
-        return this.interceptorService.intercept(of([
-            { id: 1, name: 'Item One', description: 'First item description' },
-            { id: 2, name: 'Item Two', description: 'Second item description' },
-            { id: 3, name: 'Item Three', description: 'Third item description' }
-        ]));
+    getItems(): Observable<Item[]> {
+        const items: Item[] = Array.from({ length: 10 }, (_, i) => ({
+            id: i + 1,
+            name: `Item ${i + 1}`,
+            description: `Description for item ${i + 1}`
+        }));
+
+        return of(items).pipe(delay(1000));
     }
 }

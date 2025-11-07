@@ -6,18 +6,9 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MatButtonModule],
+  imports: [MatButtonModule, RouterLink],
   templateUrl: './dashboard.html',
-  styles: [`
-    .dashboard-container {
-      text-align: center;
-      margin-top: 80px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-items: center;
-    }
-  `]
+  styleUrls: ['./dashboard.scss']
 })
 export class Dashboard {
   /**

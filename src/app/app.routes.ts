@@ -7,5 +7,11 @@ import { NoAuthGuard } from './guards/noauth.gaurd';
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: Login, canActivate: [NoAuthGuard] },
-    { path: 'dashboard', component: Dashboard, canActivate: [AuthGuard] }
+    { path: 'dashboard', component: Dashboard, canActivate: [AuthGuard] },
+    {
+        path: 'list',
+        loadChildren: () => import('./pages/list/list.module').then(m => m.ListModule),
+        canActivate: [AuthGuard]
+    }
+
 ];

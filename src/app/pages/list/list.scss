@@ -1,0 +1,49 @@
+:host {
+  .list-card {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 24px;
+    border-radius: 12px;
+  }
+
+  .title {
+    text-align: center;
+    margin-bottom: 24px;
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: #3f51b5;
+  }
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    margin: 32px 0;
+  }
+
+  .error {
+    color: #f44336;
+    text-align: center;
+    font-weight: 500;
+    margin: 16px 0;
+  }
+
+  .full-width-table {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+
+    .mat-header-row {
+      background-color: #e3f2fd;
+    }
+
+    .mat-row:nth-child(even) {
+      background-color: #f5f5f5;
+    }
+
+    .mat-cell,
+    .mat-header-cell {
+      padding: 16px;
+      text-align: left;
+    }
+  }
+}
