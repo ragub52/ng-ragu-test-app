@@ -6,20 +6,8 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [RouterLink, MatButtonModule],
-  template: `
-    <div class="dashboard-container">
-      <h2>Welcome, {{ userEmail }}</h2>
-
-      <button mat-stroked-button color="primary" routerLink="/list">
-        Go to List Page
-      </button>
-
-      <button mat-flat-button color="warn" (click)="logout()">
-        Logout
-      </button>
-    </div>
-  `,
+  imports: [MatButtonModule],
+  templateUrl: './dashboard.html',
   styles: [`
     .dashboard-container {
       text-align: center;
@@ -33,18 +21,13 @@ import { AuthService } from '../../services/auth.service';
 })
 export class Dashboard {
   /**
-   *  Logged-in user's email
-   */
-  userEmail!: string;
-
-  /**
    * Initializes the DashboardComponent.
    * 
    * @param authService - Auth service
    * @param router - Angular router
    */
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router,
   ) { }
 

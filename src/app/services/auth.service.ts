@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -8,6 +8,10 @@ import { InterceptorService } from './interceptor.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService extends BaseApiService<LoginResponse> {
+    /**
+     * User email
+     */
+    userEmail = signal<string | null>(null);
 
     /**
      * Valid email id
@@ -28,6 +32,12 @@ export class AuthService extends BaseApiService<LoginResponse> {
         private cookieService: CookieService,
         private interceptorService: InterceptorService) {
         super();
+
+        const savedEmail = localStorage.getItem('user_email');
+
+        if (savedEmail) {
+            this.userEmail.set(savedEmail);
+        }
     }
 
     /**
@@ -51,17 +61,32 @@ export class AuthService extends BaseApiService<LoginResponse> {
             };
 
             return this.interceptorService.intercept(this.simulateResponse(response, 1000).pipe(
-                tap(res => this.cookieService.set('auth_token', res.auth_token))
+                tap(res => {
+                    this.userEmail.set(response.user.email);
+                    localStorage.setItem('user_email', response.user.email);
+                    this.cookieService.set('auth_token', res.auth_token);
+                })
             ));
         }
 
         return this.interceptorService.intercept(this.simulateError('Invalid email or password', 1000));
     }
 
+    /**
+     * Check is user authenticated or not.
+     * @returns 'True' if user is authenticated.
+     */
+    isAuthenticated(): boolean {
+        const token = this.cookieService.get('auth_token');
+        return !!token;
+    }
+
     /** 
      * Handles logout
      */
     logout() {
-        console.log('User logged out');
+        this.userEmail.set(null);
+        localStorage.removeItem('user_email');
+        this.cookieService.delete('auth_token');
     }
 }
