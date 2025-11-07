@@ -66,7 +66,7 @@ export class Login {
       )
         .subscribe(response => {
           this.snackBar.open('Login successful!', 'Close', { duration: 2000 });
-          // this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard']);
         });
     }
   }
