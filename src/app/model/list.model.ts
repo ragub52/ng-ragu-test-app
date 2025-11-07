@@ -7,6 +7,9 @@ export interface Item {
     description: string;
 }
 
+/**
+ * List state model
+ */
 export interface ListState {
     items: Array<Item>;
     loading: boolean;

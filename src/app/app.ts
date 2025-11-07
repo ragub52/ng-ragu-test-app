@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LoadingSpinner } from "./core/loading-spinner/loading-spinner";
+import { LoadingSpinner } from "./shared/loading-spinner/loading-spinner";
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,5 @@ import { LoadingSpinner } from "./core/loading-spinner/loading-spinner";
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('ng-ragu-test-app');
+  protected readonly title = signal('Angular test app');
 }

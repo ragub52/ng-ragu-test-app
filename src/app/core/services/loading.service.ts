@@ -2,9 +2,14 @@ import { Injectable, signal } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class LoadingService {
-    // Use Angular signal for reactive state
+    /**
+     * Use Angular signal for reactive state
+     */
     public loading = signal(false);
 
+    /**
+     * Track active request to avoid concurrency
+     */
     activeRequests = 0;
 
     /**

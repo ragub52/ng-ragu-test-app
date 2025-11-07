@@ -1,7 +1,7 @@
 import { Injectable, computed } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { catchError, switchMap, tap, of, finalize } from 'rxjs';
-import { DataService } from '../../services/data.service';
+import { DataService } from '../../core/services/data.service';
 import { ListState, Item } from '../../model/list.model';
 
 @Injectable()

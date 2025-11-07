@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { InterceptorService } from './interceptor.service';
 import { BaseApiService } from './base-api.service';
-import { Item } from '../model/list.model';
+import { Item } from '../../model/list.model';
 
 @Injectable({ providedIn: 'root' })
 export class DataService extends BaseApiService<Item[]> {

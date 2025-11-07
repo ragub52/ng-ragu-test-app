@@ -2,9 +2,9 @@ import { Injectable, signal } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { LoginCredentials, LoginResponse } from '../model/auth.model';
+import { LoginCredentials, LoginResponse } from '../../model/auth.model';
 import { BaseApiService } from './base-api.service';
-import { InterceptorService } from './interceptor.service';
+import { InterceptorService } from '../../core/services/interceptor.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService extends BaseApiService<LoginResponse> {
