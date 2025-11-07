@@ -9,5 +9,4 @@ import { LoadingSpinner } from "./shared/loading-spinner/loading-spinner";
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('Angular test app');
 }
