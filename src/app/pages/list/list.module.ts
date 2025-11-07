@@ -6,6 +6,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { ListComponent } from './list';
+import { ListStore } from '../../store/list/list.store';
 
 @NgModule({
     declarations: [ListComponent],
@@ -16,6 +17,7 @@ import { ListComponent } from './list';
         MatProgressSpinnerModule,
         MatCardModule,
         MatButtonModule,
-    ]
+    ],
+    providers: [ListStore]
 })
 export class ListModule { }

@@ -6,7 +6,6 @@ import { ListStore } from '../../store/list/list.store';
   standalone: false,
   templateUrl: './list.html',
   styleUrls: ['./list.scss'],
-  providers: [ListStore]
 })
 export class ListComponent implements OnInit {
   /**
